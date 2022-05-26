@@ -1,0 +1,13 @@
+https --verify=no -v POST 192.168.0.237/fa/server/connection/login username=admin password=algosec --session=AFACOOKIE
+
+https --verify=no -v POST 192.168.0.237/FireFlow/api/authentication/authenticate username=admin password=algosec --session=AFFCOOKIE 
+
+https --verify=no -v POST 192.168.0.237/fa/server/connection/login?username=admin&password=algosec       DOES THIS ONE WORK???
+
+https --verify=no -v GET 192.168.0.237/afa/api/v1/devices --session=AFACOOKIE
+
+https --verify=no -v POST 192.168.0.237/afa/api/v1/query --session=AFACOOKIE
+
+https --verify=no -v GET 192.168.0.237/afa/api/v1/rules?entity=192.168.0.224 --session=AFACOOKIE
+
+

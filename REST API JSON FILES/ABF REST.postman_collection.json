@@ -1,0 +1,1766 @@
+{
+	"info": {
+		"_postman_id": "42a438ac-475f-45d5-8a4a-88ae370e9ad1",
+		"name": "ABF REST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "ABF Authenticate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d26ea3db-1708-4c60-ad20-9df8c0b7d6e7",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.environment.set(\"abf_session_id\", jsonData.jsessionid);"
+						]
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "string"
+						},
+						{
+							"key": "saveHelperData",
+							"type": "any"
+						},
+						{
+							"key": "showPassword",
+							"value": false,
+							"type": "boolean"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/login",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Logout",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/logout",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Get Apps",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Get App by ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/11",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"11"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Get App by Name",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/name/DailyWire",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"name",
+						"DailyWire"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Get Apps by Network Obj",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/network_objects/2266/applications",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"network_objects",
+						"2266",
+						"applications"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Get Apps containing Network Obj",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/network_objects/find/applications?address=10.40.18.0/24",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"network_objects",
+						"find",
+						"applications"
+					],
+					"query": [
+						{
+							"key": "address",
+							"value": "10.40.18.0/24"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Get Apps by ip",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/network_objects/find/applications?address=10.69.64.0/20",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"network_objects",
+						"find",
+						"applications"
+					],
+					"query": [
+						{
+							"key": "address",
+							"value": "10.69.64.0/20"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Get App revisions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/11/revisions",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"11",
+						"revisions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Get App Change Requests",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/11/change_requests",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"11",
+						"change_requests"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Get App Contacts",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/11/contacts",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"11",
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Get App Flows",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/11/flows",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"11",
+						"flows"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Get Flow by ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/11/flows/322",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"11",
+						"flows",
+						"322"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Get App Vulnerabilities",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/11/vulnerabilities",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"11",
+						"vulnerabilities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Get App Risks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/1/risks",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"1",
+						"risks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Get App Flow Risks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/2/flows/2/risks",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"2",
+						"flows",
+						"2",
+						"risks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Test App Connectivity",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/2/check_connectivity",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"2",
+						"check_connectivity"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Create New App",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"name\" : \"Missing Documentation\",\n   \"custom_fields\" : [{\"name\": \"City\", \"value\":\"ATL\"}],\n   \"contacts\" : [],\n   \"labels\" : [\"komugiko\"],\n   \"flows\" : [ {\n      \"type\" : \"APPLICATION\",\n      \"name\" : \"idk\",\n      \"sources\" : [ {\"name\" : \"aus_10.69.64.0/20\"}, {\"name\" : \"ad-cdp_10.154.128.0/18\"}],\n      \"users\" : [],\n      \"destinations\" : [ {\"name\" : \"a-hou_10.157.144.0/23\"}],\n      \"network_applications\" : null,\n      \"services\" : [ {\"name\": \"junos-ssh\"}],\n      \"comment\" : \"no comment\",\n      \"custom_fields\" : []\n      } ]\n}"
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/new",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Decommission App",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/3/decommission",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"3",
+						"decommission"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Apply App Revision Draft",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/2/apply",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"2",
+						"apply"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Discard App Revision",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/4/discard",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"4",
+						"discard"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Modify App Contacts",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"addContacts\": [\n        {\n            \"role\": \"General Contact\",\n            \"email\": \"andrew.klavan@dailywire.com\"\n        }\n    ],\n\t\"removeContacts\": [\n        {\n            \"role\": \"Business Owner\",\n            \"email\": \"ben.shapiro@algosec.com\"\n        }\n    ]\n}"
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/1/contacts",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"1",
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Modify App Labels",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"addLabels\": [ \"media\"],\n\t\"removeLabels\":[\"news\"]\n}"
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/1/labels",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"1",
+						"labels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Remove All Contacts from App",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/1/contacts",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"1",
+						"contacts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Remove All Custom Fields from App",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/1/custom_fields",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"1",
+						"custom_fields"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Remove All Lables from App",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/1/labels",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"1",
+						"labels"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Create New FLow",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\n\t\"type\" : \"APPLICATION\",\n\t\"name\" : \"idk\",\n\t\"sources\" : [{\"name\":\"aus_10.69.64.0/20\"}, {\"name\": \"ad-cdp_10.154.128.0/18\"}],\n\t\"users\" : [],\n\t\"destinations\" : [{\"name\" : \"a-hou_10.157.144.0/23\"}],\n\t\"network_applications\" : [],\n\t\"services\" : [{\"name\":\"junos-ssh\"}],\n\t\"comment\" : \"no comment\",\n\t\"custom_fields\" : []\n}]"
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/6/flows/new",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"6",
+						"flows",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Modify App flow",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[\n\t{\n\t\t\"flowID\": \"1\",\n\t\t\"name\": \"web access\",\n\t\t\"comment\": \"no comment\",\n\t\t\"addSources\" : [ {\"name\":\"10.79.128.0/20-mem9\"}],\n\t\t\"removeSources\" : [ {\"name\": \"10.40.18.0/24\"}],\n\t\t\"addDestinations\" : [ {\"name\":\"10.40.18.0/24\"}],\n\t\t\"removeDestinations\" : [ {\"name\": \"10.50.18.0/24\"}],\n\t\t\"addServices\" : [{\"name\":\"ssh\"}],\n\t\t\"removeServices\" : [{\"name\":\"http\"}]\n\t}\n]"
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/1/flows/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"1",
+						"flows",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Delete Flow",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/6/flows/10",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"6",
+						"flows",
+						"10"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Resolve Blocked Flows",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/14/resolve",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"14",
+						"resolve"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Create Network Obj",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"name\" : \"bobs test\",\n   \"type\" : \"Host\",\n   \"content\" : \"23.23.23.23\"\n}"
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/network_objects/new",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"network_objects",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Update Network Object",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"newobjectname\",\n\t\"content\":\"1.2.3.4\",\n\t\"setCustomFields\":[{\"name\":\"Description\",\"value\":\"no\"}]\n}"
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/network_objects/3238",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"network_objects",
+						"3238"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Get Network Objects",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/network_objects/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"network_objects",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Get Network Obj by ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/network_objects/2266",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"network_objects",
+						"2266"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Get Network Obj by name",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/network_objects/name/AuxiliaryNet",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"network_objects",
+						"name",
+						"AuxiliaryNet"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Get network objects by IP",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/network_objects/find/?address=71.44.0.0/16",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"network_objects",
+						"find",
+						""
+					],
+					"query": [
+						{
+							"key": "address",
+							"value": "71.44.0.0/16"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Get Network Obj Vulnerabilties",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/network_objects/2266/vulnerabilities",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"network_objects",
+						"2266",
+						"vulnerabilities"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF DEL Network Obj",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/network_objects/3333",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"network_objects",
+						"3333"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Create Service Object",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n   \"name\" : \"jons-test\",\n   \"content\" : [\n   \t   {\n   \t   \t \"protocol\" : \"tcp\",\n   \t   \t \"port\" : \"32400\"\n   \t   }\n   \t],\n   \"custom_fields\" : []\n}"
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/network_services/new",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"network_services",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF update service object",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"PlexMedia\",\n\t\"addContent\":[\n\t\t\t{\"protocol\":\"tcp\", \"port\":\"32400\"}\n\t\t],\n\t\"removeContent\": [\n\t\t\t{\"protocol\":\"tcp\", \"port\":\"22\"}\n\t\t]\n}"
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/network_services/1304",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"network_services",
+						"1304"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Get Service Objects",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/network_services/",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"network_services",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Get Service Obj by ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/network_services/928",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"network_services",
+						"928"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Get Service Obj by name",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/network_services/name/ah",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"network_services",
+						"name",
+						"ah"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Delete Service Obj",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/network_services/1391",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"network_services",
+						"1391"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Modify Custom Fields",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"setCustomFields\": [\n        {\n            \"name\": \"Language\",\n            \"value\": \"English\"\n        }\n    ],\n    \"clearCustomFields\": [ \"APPID\" ]\n}"
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/1/custom_fields",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"1",
+						"custom_fields"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Create New Role",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\":\"NewRole2\",\n\t\"description\":\"My New Role\",\n\t\"enabled\":true,\n\t\"users\":[\"bob\"],\n\t\"authorizedApplications\":[{\"applicationID\":\"1\", \"permission\":\"view\"}],\n\t\"authorizedViewsAndActions\":[\"viewActivityLog\",\"viewVulnerability\"]\n}"
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/settings/permissions/role/new",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"settings",
+						"permissions",
+						"role",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Update Role Permissions",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"authorizedViewsAndActionChanges\": {\n\t\t\"add\": [\"applyDrafts\"],\n\t\t\"remove\": [\"refreshVulnerability\"]\n\t}\n}"
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/settings/permissions/role?name=Viewer",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"settings",
+						"permissions",
+						"role"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Viewer"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Get Authorized Users/Roles",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/applications/1/authorized_users_and_roles",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"applications",
+						"1",
+						"authorized_users_and_roles"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF get role permissions/users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/settings/permissions/role?name=Viewer",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"settings",
+						"permissions",
+						"role"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Viewer"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Requestor/Privileged user permissions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/settings/permissions/default",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"settings",
+						"permissions",
+						"default"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF get user permissions",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "JSESSIONID={{abf_session_id}}"
+					},
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/settings/permissions/user?name=bob",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"settings",
+						"permissions",
+						"user"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "bob"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ABF Update User Permissions",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"authorizedViewsAndActionChanges\":{\n\t\t\"add\": [\"viewAllApplications\"]\n\t},\n\t\"authorizedApplicationsChanges\" :{\n\t\t\"add\": [\n\t\t\t{\"applicationID\" : 1, \"permission\":\"edit\"}\n\t\t\t]\n\t}\n}"
+				},
+				"url": {
+					"raw": "{{url}}/BusinessFlow/rest/v1/settings/permissions/user?name=joe",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"BusinessFlow",
+						"rest",
+						"v1",
+						"settings",
+						"permissions",
+						"user"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "joe"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

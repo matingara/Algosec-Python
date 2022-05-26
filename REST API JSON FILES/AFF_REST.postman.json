@@ -1,0 +1,86 @@
+{
+	"info": {
+		"_postman_id": "891ee34b-52b0-4dd7-9d42-6127079ff4ca",
+		"name": "AFF REST",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AFF Authenticate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0fc2e1a1-b7e7-40ba-a3c4-06a47decbb29",
+						"type": "text/javascript",
+						"exec": [
+							"var jsonData = pm.response.json();",
+							"",
+							"pm.environment.set(\"aff_session_id\", jsonData.data.sessionId);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ \n\t\"username\":\"{{user}}\", \n\t\"password\":\"{{password}}\", \n\t\"domain\":null\n} "
+				},
+				"url": {
+					"raw": "{{url}}/FireFlow/api/authentication/authenticate",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"FireFlow",
+						"api",
+						"authentication",
+						"authenticate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AFF Saved Search",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Cookie",
+						"value": "FireFlow_Session={{aff_session_id}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/FireFlow/api/savedsearch?savedSearchName=jban%20owner",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"FireFlow",
+						"api",
+						"savedsearch"
+					],
+					"query": [
+						{
+							"key": "savedSearchName",
+							"value": "jban%20owner"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

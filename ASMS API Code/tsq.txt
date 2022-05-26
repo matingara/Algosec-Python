@@ -1,0 +1,24 @@
+{
+  "includeDevicesPaths": true,
+  "includeRulesZones": true,
+  "queryInput": [
+    {
+      "application": [
+        "any"
+      ],
+      "destination": [
+        "172.16.102.30"
+      ],
+      "service": [
+        "tcp/7171"
+      ],
+      "source": [
+        "172.16.2.30"
+      ],
+      "user": [
+        "any"
+      ]
+    }
+  ],
+  "queryTarget": "ALL_FIREWALLS"
+}
